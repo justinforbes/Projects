@@ -289,6 +289,8 @@ inline uint8_t finish_read_byte() {
 // Full read cycle with address and data read in
 // -------------------------------------------------
 inline uint8_t read_byte(uint16_t local_address) {
+	
+  wait_for_CLK_rising_edge();
   
   start_read(local_address);
   do {  wait_for_CLK_rising_edge();  }  while (direct_ready_n == 0x1);  // Delay a clock cycle until ready is active 
